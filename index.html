@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>AJAX w2</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="dist/css/main.css">
+		
+	</head>
+		<body>
+			<form class="ui-form">
+	  			<div class="field">
+	    			<label>KEY</label>
+	    			<input type="text" name="key" placeholder="KEY HERE" id="key">
+	  			</div>
+	  			<div class="field">
+	   	 			<label>VALUE</label>
+	    			<input type="text" name="value" placeholder="VALUE HERE" id="value">
+	 			 </div>
+	  			<!-- <div class="field">
+	   				<div class="ui checkbox">
+	     			<input type="checkbox" tabindex="0" class="hidden">
+	     			<label>I agree to the Terms and Conditions</label>
+	    			</div>
+	  			</div> -->
+	  			<button class="get-button" type="submit">GET</button>
+	  			<button class="post-button" type="submit">POST</button>
+			</form>
+
+		<script src="dist/js/main.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script type="text/javascript">
+			
+			var key = document.getElementById("key");
+			var value = document.getElementById("value");
+			const getButton = document.querySelector(".get-button");
+			const postButton = document.querySelector(".post-button");
+			console.log(value);
+
+			getButton.onclick = function(){
+				axios.get("http://circuslabs.net:3000/data/" + key)
+				.then(function (myCoolData) {
+    				console.log('here is the get response data for key:', myCoolData.data, myCoolData);
+  				})
+  				.catch(function (error) {
+   					console.warn('axios encountered an error!', error);
+  				}); 
+			};
+
+			postButton.onclick = function(){
+				axios.post("httpL//circuslabs.net:300/data/" + key, jsonData)
+				.then(function(myCoolData){
+					console.log('1st response data for key: ', myCoolData.data, myCoolData, "status: ", myCoolData.statusText);
+				})
+				.catch(function(error){
+					console.warn('axios came across an error!', error)
+				});
+			}
+
+		</script>
+
+
+	</body>
+</html>
